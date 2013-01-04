@@ -25,3 +25,10 @@ if [ $PUPPET == 0 ]; then
 fi
 # Instalando o puppet.
 
+# Aplicando os manifests do Puppet.
+export MANIFESTS=`dirname $0`/manifests
+for manifest in `ls $MANIFESTS`
+do
+	puppet apply $MANIFESTS/$manifest
+done
+# Aplicando os manifests do Puppet.
