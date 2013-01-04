@@ -5,6 +5,9 @@ class update {
 			exec {"apt-get update":
 				path => "/usr/bin"
 			}
+			exec {"apt-get -f install":
+				path => "/usr/bin"
+			}
 			exec {"apt-get -y upgrade":
 				path => "/usr/bin"
 			}
