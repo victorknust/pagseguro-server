@@ -29,6 +29,8 @@ fi
 export MANIFESTS=`dirname $0`/manifests
 for manifest in `ls $MANIFESTS`
 do
-	puppet apply $MANIFESTS/$manifest
+	if [ $manifest != "files" ]; then
+		puppet apply $MANIFESTS/$manifest
+	fi
 done
 # Aplicando os manifests do Puppet.
