@@ -1,18 +1,19 @@
 class update {
-	
 	notify {"Atualizando o sistema operacional: $operatingsystem":}
-	
 	case $operatingsystem {
 		Debian,Ubuntu: {
-			$command = "apt-get update && apt-get -y upgrade"
+			exec {"apt-get update":
+				path => "/usr/bin"
+			}
+			exec {"apt-get -y upgrade":
+				path => "/usr/bin"
+			}
 		}
 		CentOS,RedHat: {
-			$command = "yum -y update"
+			exec {"yum -y update":
+				path => "/usr/bin"
+			}
 		}
-	}
-	
-	exec {"$command":
-		path => "/usr/bin"
 	}
 }
 class {"update":}
