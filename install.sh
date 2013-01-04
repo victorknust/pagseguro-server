@@ -22,6 +22,7 @@ PUPPET=`dpkg -l | grep puppet | wc -l`
 if [ $PUPPET == 0 ]; then
 	apt-get update
 	apt-get install -y puppet
+	clear
 fi
 # Instalando o puppet.
 
