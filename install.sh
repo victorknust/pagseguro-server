@@ -9,6 +9,7 @@ fi
 
 clear
 pwd > /tmp/root
+export FACTER_ROOT=$(pwd)
 
 # Configurando o FQDN.
 sh `dirname $0`/manifests/scripts/fqdn-configure.sh
