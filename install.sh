@@ -10,12 +10,17 @@ fi
 # Verificando permissao de root.
 
 # Verificando diretorio de trabalho.
-ROOT=/root/pagseguro-server
+export ROOT=/root/pagseguro-server
 if [ `pwd` != $ROOT ]; then
 	echo 'O diretorio de instalacao deve ser "/root/pagseguro-server".'
 	exit 1
 fi
 # Verificando diretorio de trabalho.
+
+# Atualizando o sistema.
+SH=`dirname $0`/manifests/scripts/system-update.sh
+sh $SH
+# Atualizando o sistema.
 
 # Instalando o puppet.
 PUPPET=`dpkg -l | grep puppet | wc -l`
@@ -30,7 +35,7 @@ fi
 export MANIFESTS=`dirname $0`/manifests
 for manifest in `ls $MANIFESTS`
 do
-	if [ $manifest != "files" ]; then
+	if [[ $manifest != "files" && $manifest != "scripts" ]]; then
 		puppet apply $MANIFESTS/$manifest
 	fi
 done
