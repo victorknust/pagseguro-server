@@ -1,6 +1,7 @@
 #!/bin/bash
 
 clear
+pwd > /tmp/root
 
 # Verificando permissao de root.
 if [ "`id -u`" != 0 ]; then
@@ -8,14 +9,6 @@ if [ "`id -u`" != 0 ]; then
 	exit 1
 fi
 # Verificando permissao de root.
-
-# Verificando diretorio de trabalho.
-export ROOT=/root/pagseguro-server
-if [ `pwd` != $ROOT ]; then
-	echo 'O diretório de instalação deve ser "/root/pagseguro-server".'
-	exit 1
-fi
-# Verificando diretorio de trabalho.
 
 # Atualizando o sistema.
 SH=`dirname $0`/manifests/scripts/system-update.sh
