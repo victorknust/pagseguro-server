@@ -4,7 +4,7 @@ clear
 
 # Verificando permissao de root.
 if [ "`id -u`" != 0 ]; then
-	echo "E necessario ter permissao de root para executar este procedimento."
+	echo "É necessario ter permissão de root para executar este procedimento."
 	exit 1
 fi
 # Verificando permissao de root.
@@ -12,7 +12,7 @@ fi
 # Verificando diretorio de trabalho.
 export ROOT=/root/pagseguro-server
 if [ `pwd` != $ROOT ]; then
-	echo 'O diretorio de instalacao deve ser "/root/pagseguro-server".'
+	echo 'O diretório de instalação deve ser "/root/pagseguro-server".'
 	exit 1
 fi
 # Verificando diretorio de trabalho.
@@ -23,12 +23,8 @@ sh $SH
 # Atualizando o sistema.
 
 # Instalando o puppet.
-PUPPET=`dpkg -l | grep puppet | wc -l`
-if [ $PUPPET == 0 ]; then
-	apt-get update
-	apt-get install -y puppet
-	clear
-fi
+SH=`dirname $0`/manifests/scripts/puppet-install.sh
+sh $SH
 # Instalando o puppet.
 
 # Aplicando os manifests do Puppet.
