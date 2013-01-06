@@ -54,5 +54,44 @@ class bash {
 		source => "$root/manifests/files/skel/.bash_logout"
 	}
 	# Configurando o /etc/skel.
+	
+	# Permissão de execussão para o bash_completion.
+	file {"/etc/profile.d/bash_completion.sh":
+		ensure => present,
+		owner  => "root",
+		group  => "root",
+		mode   => 0755,
+	}
+	# Permissão de execussão para o bash_completion.
+	
+	# Alias para cp/mv/rm
+	file {"/etc/profile.d/cp-mv-rm.sh":
+		ensure => present,
+		owner  => "root",
+		group  => "root",
+		mode   => 0755,
+		source => "$root/manifests/files/profile.d/cp-mv-rm.sh"
+	}
+	# Alias para cp/mv/rm
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 class {"bash":}
