@@ -74,7 +74,19 @@ class bash {
 	}
 	# Alias para cp/mv/rm
 	
-	
+	# Configurando locale.
+	case $operatingsystem {
+		Debian,Ubuntu: {
+			file {"/etc/profile.d/locale.sh":
+				ensure => present,
+				owner  => "root",
+				group  => "root",
+				mode   => 0755,
+				source => "$root/manifests/files/profile.d/locale.sh"
+			}
+		}
+	}
+	# Configurando locale.
 
 
 
