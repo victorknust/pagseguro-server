@@ -28,11 +28,6 @@ sh $SH
 # Instalando o puppet.
 
 # Aplicando os manifests do Puppet.
-export MANIFESTS=`dirname $0`/manifests
-for manifest in `ls $MANIFESTS`
-do
-	if [[ $manifest != "files" && $manifest != "scripts" ]]; then
-		puppet apply $MANIFESTS/$manifest
-	fi
-done
+SH=`dirname $0`/manifests/scripts/run-all-manifests.sh
+sh $SH
 # Aplicando os manifests do Puppet.
