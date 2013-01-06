@@ -10,6 +10,11 @@ if [ "`id -u`" != 0 ]; then
 fi
 # Verificando permissao de root.
 
+# Configurando o FQDN.
+SH=`dirname $0`/manifests/scripts/fqdn-configure.sh
+sh $SH
+# Configurando o FQDN.
+
 # Atualizando o sistema.
 SH=`dirname $0`/manifests/scripts/system-update.sh
 sh $SH
