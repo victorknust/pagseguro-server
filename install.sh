@@ -11,21 +11,13 @@ fi
 # Verificando permissao de root.
 
 # Configurando o FQDN.
-SH=`dirname $0`/manifests/scripts/fqdn-configure.sh
-sh $SH
-# Configurando o FQDN.
+sh `dirname $0`/manifests/scripts/fqdn-configure.sh
 
 # Atualizando o sistema.
-SH=`dirname $0`/manifests/scripts/system-update.sh
-sh $SH
-# Atualizando o sistema.
+sh `dirname $0`/manifests/scripts/system-update.sh
 
 # Instalando o puppet.
-SH=`dirname $0`/manifests/scripts/puppet-install.sh
-sh $SH
-# Instalando o puppet.
+sh `dirname $0`/manifests/scripts/puppet-install.sh
 
 # Aplicando os manifests do Puppet.
-SH=`dirname $0`/manifests/scripts/run-all-manifests.sh
-sh $SH
-# Aplicando os manifests do Puppet.
+sh `dirname $0`/manifests/scripts/run-all-manifests.sh
