@@ -1,17 +1,14 @@
 #!/bin/bash
 
-if [ -f /tmp/fqdn-escape ]; then
-	exit 0
-fi
+[ -f /tmp/fqdn-escape ] && 	exit 0
 
+FQDN=""
 HOSTS=/etc/hosts
 HOSTNAME=/etc/hostname
 SO_VALUE=$(cat $HOSTNAME)
-read -p "Informe o FQDN[$SO_VALUE]: " FQDN
 
-if [ "$FQDN" == "" ]; then
-	FQDN=$SO_VALUE
-fi
+read -p "Informe o FQDN[$SO_VALUE]: " FQDN
+[ -z "$FQDN" ] && FQDN=$SO_VALUE
 
 echo $FQDN > $HOSTNAME
 hostname -F $HOSTNAME
