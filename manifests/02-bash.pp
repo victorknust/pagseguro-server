@@ -8,13 +8,31 @@ class bash {
 		group  => root,
 		mode   => 0755,
 	}
+	file {"/root":
+		ensure => directory,
+		owner  => root,
+		group  => root,
+		mode   => 0700,
+	}
 	file {"/etc/skel/tmp":
 		ensure => directory,
 		owner  => root,
 		group  => root,
 		mode   => 0700,
 	}
+	file {"/root/tmp":
+		ensure => directory,
+		owner  => root,
+		group  => root,
+		mode   => 0700,
+	}
 	file {"/etc/skel/.ssh":
+		ensure => directory,
+		owner  => root,
+		group  => root,
+		mode   => 0700,
+	}
+	file {"/root/.ssh":
 		ensure => directory,
 		owner  => root,
 		group  => root,
@@ -32,6 +50,12 @@ class bash {
 		group  => root,
 		mode   => 0600,
 	}
+	file {"/root/.bash_history":
+		ensure => present,
+		owner  => root,
+		group  => root,
+		mode   => 0600,
+	}
 	file {"/etc/skel/.profile":
 		ensure => present,
 		owner  => "root",
@@ -39,7 +63,21 @@ class bash {
 		mode   => 0700,
 		source => "$root/manifests/files/skel/.profile"
 	}
+	file {"/root/.profile":
+		ensure => present,
+		owner  => "root",
+		group  => "root",
+		mode   => 0700,
+		source => "$root/manifests/files/skel/.profile"
+	}
 	file {"/etc/skel/.bashrc":
+		ensure => present,
+		owner  => "root",
+		group  => "root",
+		mode   => 0700,
+		source => "$root/manifests/files/skel/.bashrc"
+	}
+	file {"/root/.bashrc":
 		ensure => present,
 		owner  => "root",
 		group  => "root",
@@ -98,23 +136,5 @@ class bash {
 			# Alias para shutdown.
 		}
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 class {"bash":}
