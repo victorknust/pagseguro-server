@@ -58,36 +58,36 @@ class bash {
 	}
 	file {"/etc/skel/.profile":
 		ensure => present,
-		owner  => "root",
-		group  => "root",
+		owner  => root,
+		group  => root,
 		mode   => 0700,
 		source => "$root/manifests/files/skel/.profile"
 	}
 	file {"/root/.profile":
 		ensure => present,
-		owner  => "root",
-		group  => "root",
+		owner  => root,
+		group  => root,
 		mode   => 0700,
 		source => "$root/manifests/files/skel/.profile"
 	}
 	file {"/etc/skel/.bashrc":
 		ensure => present,
-		owner  => "root",
-		group  => "root",
+		owner  => root,
+		group  => root,
 		mode   => 0700,
 		source => "$root/manifests/files/skel/.bashrc"
 	}
 	file {"/root/.bashrc":
 		ensure => present,
-		owner  => "root",
-		group  => "root",
+		owner  => root,
+		group  => root,
 		mode   => 0700,
 		source => "$root/manifests/files/skel/.bashrc"
 	}
 	file {"/etc/skel/.bash_logout":
 		ensure => present,
-		owner  => "root",
-		group  => "root",
+		owner  => root,
+		group  => root,
 		mode   => 0700,
 		source => "$root/manifests/files/skel/.bash_logout"
 	}
@@ -96,8 +96,8 @@ class bash {
 	# Permissão de execussão para o bash_completion.
 	file {"/etc/profile.d/bash_completion.sh":
 		ensure => present,
-		owner  => "root",
-		group  => "root",
+		owner  => root,
+		group  => root,
 		mode   => 0755,
 	}
 	# Permissão de execussão para o bash_completion.
@@ -105,8 +105,8 @@ class bash {
 	# Alias para cp/mv/rm
 	file {"/etc/profile.d/cp-mv-rm.sh":
 		ensure => present,
-		owner  => "root",
-		group  => "root",
+		owner  => root,
+		group  => root,
 		mode   => 0755,
 		source => "$root/manifests/files/profile.d/cp-mv-rm.sh"
 	}
@@ -118,8 +118,8 @@ class bash {
 			# Configurando locale.
 			file {"/etc/profile.d/locale.sh":
 				ensure => present,
-				owner  => "root",
-				group  => "root",
+				owner  => root,
+				group  => root,
 				mode   => 0755,
 				source => "$root/manifests/files/profile.d/locale.sh"
 			}
@@ -128,12 +128,23 @@ class bash {
 			# Alias para shutdown.
 			file {"/etc/profile.d/halt.sh":
 				ensure => present,
-				owner  => "root",
-				group  => "root",
+				owner  => root,
+				group  => root,
 				mode   => 0755,
 				source => "$root/manifests/files/profile.d/halt.sh"
 			}
 			# Alias para shutdown.
+		}
+		RedHat,CentOS: {
+			exec {"rm -f /etc/motd":
+				path => "/bin"
+			}
+			exec {"touch /etc/motd":
+				path => "/bin"
+			}
+			exec {"echo 'clear' >> /etc/rc.local":
+				path => "/bin"
+			}
 		}
 	}
 }
