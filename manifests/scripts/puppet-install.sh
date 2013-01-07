@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PUPPET=`dpkg -l | grep puppet | wc -l`
+PUPPET=$(dpkg -l | grep puppet | wc -l)
 if [ $PUPPET == 0 ]; then
 	if [ -f /usr/bin/apt-get ]; then
 		# Instalando o Puppet em Debian/Ubuntu.
