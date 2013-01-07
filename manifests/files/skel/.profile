@@ -20,3 +20,10 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+# ser $PS1 variable.
+if [ "`id -u`" -eq 0 ]; then
+	PS1="[\u@\h \W]# "
+else
+	PS1="[\u@\h \W]$ "
+fi
