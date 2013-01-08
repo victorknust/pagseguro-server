@@ -91,6 +91,13 @@ class bash {
 		mode   => 0700,
 		source => "$root/manifests/files/skel/.bash_logout"
 	}
+	file {"/root/.bash_logout":
+		ensure => present,
+		owner  => root,
+		group  => root,
+		mode   => 0700,
+		source => "$root/manifests/files/skel/.bash_logout"
+	}
 	# Configurando o /etc/skel.
 	
 	# Permissão de execussão para o bash_completion.
