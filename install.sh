@@ -2,7 +2,7 @@
 
 # Verificando permissao de root.
 if [ "`id -u`" != 0 ]; then
-	echo "É necessario ter permissão de root para executar este procedimento."
+	echo "E necessario ter permissão de root para executar este procediment"
 	exit 1
 fi
 # Verificando permissao de root.
