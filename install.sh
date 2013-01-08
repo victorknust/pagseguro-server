@@ -8,17 +8,16 @@ fi
 # Verificando permissao de root.
 
 clear
-pwd > /tmp/root
 export FACTER_ROOT=$(pwd)
 
 # Configurando o FQDN.
-sh `dirname $0`/manifests/scripts/fqdn-configure.sh
+./`dirname $0`/manifests/scripts/fqdn-configure.sh
 
 # Atualizando o sistema.
-sh `dirname $0`/manifests/scripts/system-update.sh
+./`dirname $0`/manifests/scripts/system-update.sh
 
 # Instalando o puppet.
-sh `dirname $0`/manifests/scripts/puppet-install.sh
+./`dirname $0`/manifests/scripts/puppet-install.sh
 
 # Aplicando os manifests do Puppet.
-sh `dirname $0`/manifests/scripts/run-all-manifests.sh
+./`dirname $0`/manifests/scripts/run-all-manifests.sh
