@@ -1,1 +1,1 @@
-retornourl="http://localhost/pagseguro/retorno.php"
+retornourl="http://telesena.local/pagseguro/retorno"
