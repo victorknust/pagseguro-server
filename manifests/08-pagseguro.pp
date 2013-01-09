@@ -6,13 +6,13 @@ class pagseguro {
 		ensure => installed
 	}
 	
+	$pagseguro = "/usr/local/pagseguro"
 	file {"/usr/local/pagseguro":
-		ensure => directory,
-		owner  => root,
-		group  => root,
-		mode   => 0755,
-		source => "$root/manifests/files/pagseguro/server",
+		ensure  => directory,
+		owner   => root,
+		group   => root,
+		mode    => 0755,
 	}
-	
+	exec {"$root/manifests/files/pagseguro/cp.sh":}
 }
 class {"pagseguro":}
